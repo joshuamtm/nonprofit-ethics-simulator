@@ -84,6 +84,7 @@ Edit `scenarios.json` to add new scenarios. Each scenario needs:
 ### Styling
 
 Modify `style.css` to change:
+
 - Color scheme (look for CSS variables and gradient definitions)
 - Typography (font-family declarations)
 - Layout spacing (padding and margin values)
@@ -106,6 +107,7 @@ Modify `style.css` to change:
 ## Educational Use
 
 This tool is designed for:
+
 - Nonprofit leadership training
 - Ethics workshops
 - AI literacy programs
@@ -115,6 +117,7 @@ This tool is designed for:
 ## Future Enhancements
 
 Potential additions for v2:
+
 - User response tracking and analytics
 - Additional scenarios (10-15 total)
 - Share results functionality
