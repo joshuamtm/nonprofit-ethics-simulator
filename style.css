@@ -263,28 +263,38 @@ main {
   align-items: center;
   padding: 1.5rem 2.5rem;
   min-width: 200px;
-}
-
-.btn-lever {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-}
-
-.btn-no-lever {
   background: white;
   border: 3px solid #667eea;
   color: #667eea;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn-lever:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+.btn-lever.selected,
+.btn-no-lever.selected {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  animation: pulse 0.5s ease;
 }
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.btn-lever:hover,
 .btn-no-lever:hover {
   background: #f8f9fa;
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-lever.selected:hover,
+.btn-no-lever.selected:hover {
+  background: linear-gradient(135deg, #5a67d8, #6b449b);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
 }
 
 .lever-icon,
@@ -450,6 +460,142 @@ footer {
   }
 }
 
+/* Trolley Animation */
+.trolley-animation {
+  position: fixed;
+  top: 50%;
+  left: -100px;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1000;
+  display: none;
+}
+
+.trolley-animation.active {
+  display: block;
+}
+
+.trolley-track {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  overflow: hidden;
+}
+
+.track-split {
+  position: absolute;
+  left: 40%;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+}
+
+.track-ai,
+.track-human {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  background: #333;
+  width: 100%;
+}
+
+.track-ai {
+  transform-origin: left center;
+  transform: rotate(-15deg);
+}
+
+.track-human {
+  transform-origin: left center;
+  transform: rotate(15deg);
+}
+
+.track-label {
+  position: absolute;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.track-ai .track-label {
+  top: -30px;
+  right: 20px;
+  background: #667eea;
+  color: white;
+}
+
+.track-human .track-label {
+  bottom: -30px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+}
+
+.trolley {
+  position: absolute;
+  bottom: 30px;
+  left: -80px;
+  width: 60px;
+  height: 40px;
+  background: #e74c3c;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  animation: none;
+  transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trolley::before {
+  content: "🚃";
+}
+
+.trolley.move-ai {
+  animation: moveAI 3s ease-in-out forwards;
+}
+
+.trolley.move-human {
+  animation: moveHuman 3s ease-in-out forwards;
+}
+
+@keyframes moveAI {
+  0% {
+    left: -80px;
+    bottom: 30px;
+  }
+  40% {
+    left: 40%;
+    bottom: 30px;
+  }
+  100% {
+    left: 110%;
+    bottom: 50px;
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes moveHuman {
+  0% {
+    left: -80px;
+    bottom: 30px;
+  }
+  40% {
+    left: 40%;
+    bottom: 30px;
+  }
+  100% {
+    left: 110%;
+    bottom: 10px;
+    transform: rotate(10deg);
+  }
+}
+
 /* High Contrast Mode Support */
 @media (prefers-contrast: high) {
   .benefits-box {
@@ -462,13 +608,16 @@ footer {
     border: 3px solid red;
   }
 
-  .btn-lever {
-    background: #2c3e50;
-  }
-
+  .btn-lever,
   .btn-no-lever {
     background: white;
     border: 3px solid #2c3e50;
     color: #2c3e50;
+  }
+
+  .btn-lever.selected,
+  .btn-no-lever.selected {
+    background: #2c3e50;
+    color: white;
   }
 }

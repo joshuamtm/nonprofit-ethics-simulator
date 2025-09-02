@@ -37,6 +37,10 @@ function loadScenario(index) {
   }
 
   const scenario = scenarios[index];
+  
+  // Reset button selections
+  document.querySelector('.btn-lever').classList.remove('selected');
+  document.querySelector('.btn-no-lever').classList.remove('selected');
 
   // Update scenario counter
   document.getElementById("current-scenario").textContent = index + 1;
@@ -70,6 +74,24 @@ function loadScenario(index) {
 function makeDecision(pulledLever) {
   const scenario = scenarios[currentScenarioIndex];
 
+  // Visual feedback on button selection
+  const leverBtn = document.querySelector('.btn-lever');
+  const noLeverBtn = document.querySelector('.btn-no-lever');
+  
+  // Remove any existing selections
+  leverBtn.classList.remove('selected');
+  noLeverBtn.classList.remove('selected');
+  
+  // Add selection to clicked button
+  if (pulledLever) {
+    leverBtn.classList.add('selected');
+  } else {
+    noLeverBtn.classList.add('selected');
+  }
+
+  // Trigger trolley animation
+  playTrolleyAnimation(pulledLever);
+
   // Record decision
   userDecisions.push({
     scenario: scenario.title,
@@ -77,8 +99,37 @@ function makeDecision(pulledLever) {
     scenarioId: scenario.id,
   });
 
-  // Show outcome
-  showOutcome(pulledLever);
+  // Show outcome after animation
+  setTimeout(() => {
+    showOutcome(pulledLever);
+  }, 3500); // Wait for animation to complete
+}
+
+// Play trolley animation
+function playTrolleyAnimation(toAITrack) {
+  const animationContainer = document.getElementById('trolley-animation');
+  const trolley = document.getElementById('trolley');
+  
+  // Reset animation classes
+  trolley.classList.remove('move-ai', 'move-human');
+  
+  // Show animation container
+  animationContainer.classList.add('active');
+  
+  // Trigger animation after a brief delay
+  setTimeout(() => {
+    if (toAITrack) {
+      trolley.classList.add('move-ai');
+    } else {
+      trolley.classList.add('move-human');
+    }
+  }, 100);
+  
+  // Hide animation after completion
+  setTimeout(() => {
+    animationContainer.classList.remove('active');
+    trolley.classList.remove('move-ai', 'move-human');
+  }, 3400);
 }
 
 // Show outcome screen

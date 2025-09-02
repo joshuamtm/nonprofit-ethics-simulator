@@ -45,23 +45,27 @@
     {
       "id": "climate-watch",
       "title": "ClimateWatch: AI-Powered Environmental Research",
-      "currentState": "Your climate research nonprofit analyzes satellite data manually, processing only 15% of available environmental data. Critical deforestation and emissions patterns go undetected for months.",
-      "aiOpportunity": "Deploy advanced AI models to analyze 100% of satellite imagery, detect illegal logging in real-time, predict wildfire risks, and track corporate emissions violations with unprecedented accuracy.",
+      "currentState": "Your climate research nonprofit analyzes satellite data manually, processing only 15% of available environmental data. Critical deforestation events go undetected for 3-6 months. Last year, you identified 47 major violations, but experts estimate you missed 200+ cases. Your team of 12 analysts works 60-hour weeks trying to keep up with the data backlog.",
+      "aiOpportunity": "Deploy advanced AI models powered by GPT-4 Vision and custom ML algorithms to analyze 100% of satellite imagery in real-time. The system would detect illegal logging within hours, predict wildfire risks 2 weeks in advance, track corporate emissions violations automatically, and generate court-ready evidence packages. Microsoft Azure offers to host the infrastructure at a 50% nonprofit discount.",
       "benefits": [
-        "Process 100% of available satellite data (up from 15%)",
-        "Detect deforestation within 24 hours (vs. 3-6 months)",
-        "Identify 5x more environmental violations",
-        "Generate evidence for 300+ legal cases annually"
+        "Process 100% of satellite data vs current 15% coverage",
+        "Detect deforestation within 24 hours instead of 3-6 months",
+        "Identify estimated 250+ violations annually (5x current rate)",
+        "Generate evidence packages for 300+ legal cases per year",
+        "Predict wildfire risks with 89% accuracy 2 weeks in advance",
+        "Free analysts to focus on policy and advocacy work"
       ],
       "risks": [
-        "AI training and operation consumes 500 MWh annually (equivalent to 50 homes)",
-        "Data centers require 15 million gallons of water for cooling",
-        "Carbon footprint of 250 tons CO2 per year",
-        "Contributing to the very problem you're trying to solve"
+        "AI infrastructure consumes 500 MWh annually (powers 50 US homes)",
+        "Data centers require 15 million gallons of water yearly for cooling",
+        "Generates 250 tons CO2 annually (equals 1,000 transatlantic flights)",
+        "Training new models creates 284 tons CO2 (lifetime of 5 cars)",
+        "Cooling systems impact local water tables in drought regions",
+        "Your carbon footprint would exceed 100 small nonprofits combined"
       ],
-      "pullLeverOutcome": "Your AI system became instrumental in stopping deforestation across 50,000 acres and won landmark climate lawsuits. However, an investigative report revealed your AI infrastructure's carbon footprint equals that of 1,000 transatlantic flights annually. Climate activists now protest outside your offices, calling you hypocrites.",
-      "dontPullOutcome": "You chose low-tech approaches, maintaining your organization's carbon-neutral status. While you caught fewer violations, your moral authority remained intact. When testifying before Congress, your director could honestly say 'we practice what we preach,' lending powerful credibility to your advocacy.",
-      "reflection": "This paradox captures the ultimate irony: using environmentally harmful AI to protect the environment. It asks whether the ends (saving forests and climate) justify the means (contributing to emissions and water scarcity)."
+      "pullLeverOutcome": "Your AI system became a game-changer, stopping deforestation across 50,000 acres in the Amazon and providing evidence for 12 landmark climate lawsuits that resulted in $2B in penalties. You prevented an estimated 10 million tons of CO2 emissions. However, Greenpeace published a devastating report: your AI infrastructure's annual carbon footprint (250 tons) and water usage (15M gallons) made you one of the tech sector's worst environmental offenders among nonprofits. Climate activists now camp outside your offices with signs reading 'Climate Hypocrites' and 'You Became What You Fought Against.' Major donors are questioning their support.",
+      "dontPullOutcome": "You maintained your commitment to carbon neutrality, using traditional analysis methods enhanced with open-source tools. While you identified only 52 violations this year (missing an estimated 200+), your organization retained unassailable moral authority. When your director testified at the UN Climate Summit, she declared: 'We refuse to burn the planet to save it. Every ton of CO2 matters, including ours.' The speech went viral, inspiring a global movement of 'Low-Tech for High-Impact' environmental groups. Your principled stance attracted $5M in new funding from foundations specifically supporting sustainable advocacy.",
+      "reflection": "This scenario embodies the core paradox of technological solutionism in climate work. The AI could genuinely save forests and prosecute polluters at scale, potentially preventing millions of tons of emissions. Yet it requires massive energy and water resources, making your organization part of the problem. Beyond the numbers, this raises questions about moral authority: Can you credibly advocate for emissions reduction while running carbon-intensive AI? Does effectiveness trump consistency? The scenario forces you to weigh immediate, measurable environmental wins against principled leadership and long-term credibility in the climate movement."
     },
     {
       "id": "food-bank-optimizer",
