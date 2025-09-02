@@ -278,9 +278,15 @@ main {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .btn-lever:hover,
@@ -501,20 +507,22 @@ footer {
 /* Trolley Car Design */
 .trolley-car {
   position: absolute;
-  left: -150px;
+  left: -200px;
   top: 100px;
-  width: 120px;
-  height: 80px;
+  width: 140px;
+  height: 90px;
   z-index: 10;
   transition: all 0.3s ease;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
 }
 
 .trolley-body {
-  background: #e74c3c;
-  border-radius: 10px 10px 5px 5px;
-  height: 60px;
+  background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+  border-radius: 15px 15px 5px 5px;
+  height: 70px;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border: 2px solid #a93226;
 }
 
 .trolley-window {
@@ -554,8 +562,12 @@ footer {
 }
 
 @keyframes wheelRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .trolley-label {
@@ -583,14 +595,21 @@ footer {
   left: 0;
   top: 20px;
   width: 40%;
-  height: 6px;
-  background: linear-gradient(90deg, #555 0%, #555 48%, #888 52%, #555 100%);
-  border-radius: 3px;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #444 0px,
+    #444 10px,
+    #666 10px,
+    #666 20px
+  );
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .main-track::before,
 .main-track::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -8px;
   width: 2px;
@@ -598,8 +617,12 @@ footer {
   background: #8b7355;
 }
 
-.main-track::before { left: 10%; }
-.main-track::after { left: 30%; }
+.main-track::before {
+  left: 10%;
+}
+.main-track::after {
+  left: 30%;
+}
 
 .switch-point {
   position: absolute;
@@ -614,14 +637,28 @@ footer {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 40px;
-  height: 8px;
-  background: #f39c12;
-  border-radius: 4px;
+  width: 50px;
+  height: 12px;
+  background: linear-gradient(90deg, #f39c12, #e67e22);
+  border-radius: 6px;
   transform-origin: left center;
   transform: translate(-50%, -50%) rotate(0deg);
-  transition: transform 1s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  border: 2px solid #d68910;
+}
+
+.lever::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: #e74c3c;
+  border-radius: 50%;
+  border: 2px solid #c0392b;
 }
 
 .lever.pulled {
@@ -637,9 +674,24 @@ footer {
   position: absolute;
   left: 40%;
   width: 60%;
-  height: 6px;
-  background: linear-gradient(90deg, #555 0%, #555 48%, #888 52%, #555 100%);
-  border-radius: 3px;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #444 0px,
+    #444 10px,
+    #666 10px,
+    #666 20px
+  );
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
+  transition: all 0.5s ease;
+}
+
+.top-track.active,
+.bottom-track.active {
+  opacity: 1;
+  height: 10px;
 }
 
 .top-track {
@@ -658,14 +710,28 @@ footer {
   position: absolute;
   right: -10px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0.9);
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 15px;
-  border-radius: 10px;
+  padding: 12px 20px;
+  border-radius: 15px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
+  transition: all 0.5s ease;
+  opacity: 0.7;
+}
+
+.track-destination.arriving {
+  transform: translateY(-50%) scale(1.1);
+  opacity: 1;
+  animation: pulse 0.5s ease 2;
+}
+
+@keyframes pulse {
+  50% {
+    transform: translateY(-50%) scale(1.2);
+  }
 }
 
 .top-track .track-destination {
@@ -686,50 +752,97 @@ footer {
 
 /* Trolley Movement Animations */
 .trolley-car.move-to-ai {
-  animation: moveToAI 5s ease-in-out forwards;
+  animation: moveToAI 7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .trolley-car.move-to-human {
-  animation: moveToHuman 5s ease-in-out forwards;
+  animation: moveToHuman 7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Speed lines effect */
+.trolley-car.move-to-ai::before,
+.trolley-car.move-to-human::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6));
+  animation: speedLines 0.5s linear infinite;
+}
+
+@keyframes speedLines {
+  to {
+    transform: translateY(-50%) translateX(-10px);
+    opacity: 0;
+  }
 }
 
 @keyframes moveToAI {
   0% {
-    left: -150px;
+    left: -200px;
     top: 100px;
+    transform: scale(1);
   }
-  30% {
+  20% {
+    left: 100px;
+    top: 100px;
+    transform: scale(1.05);
+  }
+  40% {
     left: 250px;
     top: 100px;
+    transform: scale(1.05);
   }
-  35% {
+  45% {
     left: 280px;
     top: 100px;
+    transform: scale(1.1) rotate(-2deg);
+  }
+  50% {
+    left: 310px;
+    top: 95px;
+    transform: scale(1.1) rotate(-4deg);
   }
   100% {
-    left: 750px;
-    top: 70px;
-    transform: rotate(-8deg);
+    left: 850px;
+    top: 65px;
+    transform: scale(0.9) rotate(-8deg);
   }
 }
 
 @keyframes moveToHuman {
   0% {
-    left: -150px;
+    left: -200px;
     top: 100px;
+    transform: scale(1);
   }
-  30% {
+  20% {
+    left: 100px;
+    top: 100px;
+    transform: scale(1.05);
+  }
+  40% {
     left: 250px;
     top: 100px;
+    transform: scale(1.05);
   }
-  35% {
+  45% {
     left: 280px;
     top: 100px;
+    transform: scale(1.1) rotate(2deg);
+  }
+  50% {
+    left: 310px;
+    top: 105px;
+    transform: scale(1.1) rotate(4deg);
   }
   100% {
-    left: 750px;
-    top: 130px;
-    transform: rotate(8deg);
+    left: 850px;
+    top: 135px;
+    transform: scale(0.9) rotate(8deg);
   }
 }
 
@@ -762,13 +875,27 @@ footer {
 
 /* Highlight tracks */
 .top-track.highlight {
-  animation: pulseTrack 0.5s ease 3;
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+  animation: pulseTrack 1s ease 3;
+  box-shadow: 0 0 30px rgba(102, 126, 234, 1);
+  background: repeating-linear-gradient(
+    90deg,
+    #667eea 0px,
+    #667eea 10px,
+    #764ba2 10px,
+    #764ba2 20px
+  );
 }
 
 .bottom-track.highlight {
-  animation: pulseTrack 0.5s ease 3;
-  box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+  animation: pulseTrack 1s ease 3;
+  box-shadow: 0 0 30px rgba(76, 175, 80, 1);
+  background: repeating-linear-gradient(
+    90deg,
+    #4caf50 0px,
+    #4caf50 10px,
+    #66bb6a 10px,
+    #66bb6a 20px
+  );
 }
 
 @keyframes pulseTrack {

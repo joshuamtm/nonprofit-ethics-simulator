@@ -37,10 +37,10 @@ function loadScenario(index) {
   }
 
   const scenario = scenarios[index];
-  
+
   // Reset button selections
-  document.querySelector('.btn-lever').classList.remove('selected');
-  document.querySelector('.btn-no-lever').classList.remove('selected');
+  document.querySelector(".btn-lever").classList.remove("selected");
+  document.querySelector(".btn-no-lever").classList.remove("selected");
 
   // Update scenario counter
   document.getElementById("current-scenario").textContent = index + 1;
@@ -75,18 +75,18 @@ function makeDecision(pulledLever) {
   const scenario = scenarios[currentScenarioIndex];
 
   // Visual feedback on button selection
-  const leverBtn = document.querySelector('.btn-lever');
-  const noLeverBtn = document.querySelector('.btn-no-lever');
-  
+  const leverBtn = document.querySelector(".btn-lever");
+  const noLeverBtn = document.querySelector(".btn-no-lever");
+
   // Remove any existing selections
-  leverBtn.classList.remove('selected');
-  noLeverBtn.classList.remove('selected');
-  
+  leverBtn.classList.remove("selected");
+  noLeverBtn.classList.remove("selected");
+
   // Add selection to clicked button
   if (pulledLever) {
-    leverBtn.classList.add('selected');
+    leverBtn.classList.add("selected");
   } else {
-    noLeverBtn.classList.add('selected');
+    noLeverBtn.classList.add("selected");
   }
 
   // Record decision
@@ -104,62 +104,89 @@ function makeDecision(pulledLever) {
 
 // Show animation screen and play trolley animation
 function showAnimationScreen(pulledLever) {
-  showScreen('animation-screen');
-  
-  const trolleyCar = document.getElementById('trolley-car');
-  const lever = document.getElementById('track-lever');
-  const aiTrack = document.getElementById('ai-track');
-  const humanTrack = document.getElementById('human-track');
-  const choiceMessage = document.getElementById('choice-message');
-  const animationTitle = document.getElementById('animation-title');
-  
+  showScreen("animation-screen");
+
+  const trolleyCar = document.getElementById("trolley-car");
+  const lever = document.getElementById("track-lever");
+  const aiTrack = document.getElementById("ai-track");
+  const humanTrack = document.getElementById("human-track");
+  const choiceMessage = document.getElementById("choice-message");
+  const animationTitle = document.getElementById("animation-title");
+  const aiDestination = aiTrack.querySelector(".track-destination");
+  const humanDestination = humanTrack.querySelector(".track-destination");
+
   // Reset animation classes
-  trolleyCar.classList.remove('move-to-ai', 'move-to-human');
-  lever.classList.remove('pulled', 'not-pulled');
-  aiTrack.classList.remove('highlight');
-  humanTrack.classList.remove('highlight');
-  choiceMessage.style.animation = 'none';
-  
+  trolleyCar.classList.remove("move-to-ai", "move-to-human");
+  lever.classList.remove("pulled", "not-pulled");
+  aiTrack.classList.remove("highlight", "active");
+  humanTrack.classList.remove("highlight", "active");
+  aiDestination.classList.remove("arriving");
+  humanDestination.classList.remove("arriving");
+  choiceMessage.style.animation = "none";
+
   // Set title based on choice
   if (pulledLever) {
     animationTitle.textContent = "You Pulled the Lever!";
-    choiceMessage.textContent = "The trolley switches to the AI track...";
+    choiceMessage.textContent =
+      "Watch as the trolley switches to the AI track...";
   } else {
     animationTitle.textContent = "You Chose Not to Pull!";
-    choiceMessage.textContent = "The trolley continues on the human track...";
+    choiceMessage.textContent =
+      "Watch as the trolley continues on the human track...";
   }
-  
-  // Start animation sequence
+
+  // Start animation sequence with clear staging
   setTimeout(() => {
-    // Move lever
+    // STAGE 1: Move lever with emphasis
     if (pulledLever) {
-      lever.classList.add('pulled');
+      lever.classList.add("pulled");
+      // Activate AI track
       setTimeout(() => {
-        aiTrack.classList.add('highlight');
-      }, 500);
+        aiTrack.classList.add("active");
+        aiTrack.classList.add("highlight");
+      }, 800);
     } else {
-      lever.classList.add('not-pulled');
+      lever.classList.add("not-pulled");
+      // Activate human track
       setTimeout(() => {
-        humanTrack.classList.add('highlight');
-      }, 500);
+        humanTrack.classList.add("active");
+        humanTrack.classList.add("highlight");
+      }, 800);
     }
-    
-    // Start trolley movement
+
+    // STAGE 2: Start trolley movement
     setTimeout(() => {
       if (pulledLever) {
-        trolleyCar.classList.add('move-to-ai');
+        trolleyCar.classList.add("move-to-ai");
+        // Highlight destination when trolley approaches
+        setTimeout(() => {
+          aiDestination.classList.add("arriving");
+        }, 4500);
       } else {
-        trolleyCar.classList.add('move-to-human');
+        trolleyCar.classList.add("move-to-human");
+        // Highlight destination when trolley approaches
+        setTimeout(() => {
+          humanDestination.classList.add("arriving");
+        }, 4500);
       }
-      
-      // Reapply message animation
-      choiceMessage.style.animation = 'fadeInMessage 1s ease-in 2s forwards';
-    }, 1000);
-    
-    // Show outcome after animation completes
+
+      // Update message during movement
+      choiceMessage.style.animation = "fadeInMessage 1s ease-in 2s forwards";
+      setTimeout(() => {
+        if (pulledLever) {
+          choiceMessage.textContent =
+            "The trolley has taken the AI implementation path!";
+        } else {
+          choiceMessage.textContent =
+            "The trolley has stayed on the human approach path!";
+        }
+      }, 5000);
+    }, 2000);
+
+    // STAGE 3: Show outcome after animation completes
     setTimeout(() => {
       showOutcome(pulledLever);
-    }, 6000);
+    }, 8500);
   }, 500);
 }
 
