@@ -98,6 +98,53 @@
           </div>
         </div>
 
+        <!-- Animation Screen -->
+        <div id="animation-screen" class="screen">
+          <div class="animation-content">
+            <h2 id="animation-title">Your Choice Has Been Made...</h2>
+            <div class="trolley-scene">
+              <div class="trolley-container">
+                <div class="trolley-car" id="trolley-car">
+                  <div class="trolley-body">
+                    <div class="trolley-window"></div>
+                    <div class="trolley-window"></div>
+                  </div>
+                  <div class="trolley-wheels">
+                    <div class="wheel"></div>
+                    <div class="wheel"></div>
+                  </div>
+                  <div class="trolley-label">ETHICS EXPRESS</div>
+                </div>
+                
+                <div class="track-system">
+                  <div class="main-track"></div>
+                  <div class="switch-point" id="switch-point">
+                    <div class="lever" id="track-lever"></div>
+                  </div>
+                  <div class="top-track" id="ai-track">
+                    <div class="track-line"></div>
+                    <div class="track-destination">
+                      <span class="destination-icon">🤖</span>
+                      <span class="destination-label">AI IMPLEMENTATION</span>
+                    </div>
+                  </div>
+                  <div class="bottom-track" id="human-track">
+                    <div class="track-line"></div>
+                    <div class="track-destination">
+                      <span class="destination-icon">👥</span>
+                      <span class="destination-label">HUMAN APPROACH</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="animation-message" id="animation-message">
+                <p id="choice-message"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Summary Screen -->
         <div id="summary-screen" class="screen">
           <h2>Simulation Complete</h2>
@@ -123,21 +170,6 @@
     <footer>
       <p>An ethical exploration tool for nonprofit professionals</p>
     </footer>
-
-    <!-- Trolley Animation Container -->
-    <div class="trolley-animation" id="trolley-animation">
-      <div class="trolley-track">
-        <div class="track-split">
-          <div class="track-ai">
-            <span class="track-label">AI Track</span>
-          </div>
-          <div class="track-human">
-            <span class="track-label">Human Track</span>
-          </div>
-        </div>
-        <div class="trolley" id="trolley"></div>
-      </div>
-    </div>
 
     <script src="script.js"></script>
   </body>

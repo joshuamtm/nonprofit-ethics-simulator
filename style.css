@@ -460,139 +460,320 @@ footer {
   }
 }
 
-/* Trolley Animation */
-.trolley-animation {
-  position: fixed;
-  top: 50%;
-  left: -100px;
-  transform: translateY(-50%);
-  width: 100%;
-  height: 200px;
-  pointer-events: none;
-  z-index: 1000;
-  display: none;
+/* Animation Screen */
+#animation-screen {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.trolley-animation.active {
-  display: block;
+.animation-content {
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.trolley-track {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  right: 0;
-  height: 100px;
+#animation-title {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.trolley-scene {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
   overflow: hidden;
 }
 
-.track-split {
-  position: absolute;
-  left: 40%;
-  bottom: 0;
-  width: 20%;
-  height: 100%;
-}
-
-.track-ai,
-.track-human {
-  position: absolute;
-  bottom: 0;
-  height: 4px;
-  background: #333;
+.trolley-container {
+  position: relative;
+  height: 300px;
   width: 100%;
 }
 
-.track-ai {
-  transform-origin: left center;
-  transform: rotate(-15deg);
-}
-
-.track-human {
-  transform-origin: left center;
-  transform: rotate(15deg);
-}
-
-.track-label {
+/* Trolley Car Design */
+.trolley-car {
   position: absolute;
+  left: -150px;
+  top: 100px;
+  width: 120px;
+  height: 80px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.trolley-body {
+  background: #e74c3c;
+  border-radius: 10px 10px 5px 5px;
+  height: 60px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.trolley-window {
+  position: absolute;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  background: #87ceeb;
+  border: 3px solid #c0392b;
+  border-radius: 3px;
+}
+
+.trolley-window:first-child {
+  left: 15px;
+}
+
+.trolley-window:last-child {
+  right: 15px;
+}
+
+.trolley-wheels {
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+
+.wheel {
+  width: 20px;
+  height: 20px;
+  background: #2c3e50;
+  border-radius: 50%;
+  border: 3px solid #34495e;
+  animation: wheelRotate 2s linear infinite;
+}
+
+@keyframes wheelRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.trolley-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Track System */
+.track-system {
+  position: absolute;
+  top: 140px;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+.main-track {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 40%;
+  height: 6px;
+  background: linear-gradient(90deg, #555 0%, #555 48%, #888 52%, #555 100%);
+  border-radius: 3px;
+}
+
+.main-track::before,
+.main-track::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  width: 2px;
+  height: 22px;
+  background: #8b7355;
+}
+
+.main-track::before { left: 10%; }
+.main-track::after { left: 30%; }
+
+.switch-point {
+  position: absolute;
+  left: 38%;
+  top: 10px;
+  width: 60px;
+  height: 60px;
+  z-index: 5;
+}
+
+.lever {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 8px;
+  background: #f39c12;
+  border-radius: 4px;
+  transform-origin: left center;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: transform 1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.lever.pulled {
+  transform: translate(-50%, -50%) rotate(-30deg);
+}
+
+.lever.not-pulled {
+  transform: translate(-50%, -50%) rotate(30deg);
+}
+
+.top-track,
+.bottom-track {
+  position: absolute;
+  left: 40%;
+  width: 60%;
+  height: 6px;
+  background: linear-gradient(90deg, #555 0%, #555 48%, #888 52%, #555 100%);
+  border-radius: 3px;
+}
+
+.top-track {
+  top: 0;
+  transform: rotate(-8deg);
+  transform-origin: left center;
+}
+
+.bottom-track {
+  top: 40px;
+  transform: rotate(8deg);
+  transform-origin: left center;
+}
+
+.track-destination {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
   font-weight: bold;
   font-size: 14px;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: 4px;
 }
 
-.track-ai .track-label {
+.top-track .track-destination {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
   top: -30px;
-  right: 20px;
-  background: #667eea;
-  color: white;
 }
 
-.track-human .track-label {
-  bottom: -30px;
-  right: 20px;
-  background: #4caf50;
+.bottom-track .track-destination {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
   color: white;
+  top: 20px;
 }
 
-.trolley {
-  position: absolute;
-  bottom: 30px;
-  left: -80px;
-  width: 60px;
-  height: 40px;
-  background: #e74c3c;
-  border-radius: 8px;
+.destination-icon {
+  font-size: 24px;
+}
+
+/* Trolley Movement Animations */
+.trolley-car.move-to-ai {
+  animation: moveToAI 5s ease-in-out forwards;
+}
+
+.trolley-car.move-to-human {
+  animation: moveToHuman 5s ease-in-out forwards;
+}
+
+@keyframes moveToAI {
+  0% {
+    left: -150px;
+    top: 100px;
+  }
+  30% {
+    left: 250px;
+    top: 100px;
+  }
+  35% {
+    left: 280px;
+    top: 100px;
+  }
+  100% {
+    left: 750px;
+    top: 70px;
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes moveToHuman {
+  0% {
+    left: -150px;
+    top: 100px;
+  }
+  30% {
+    left: 250px;
+    top: 100px;
+  }
+  35% {
+    left: 280px;
+    top: 100px;
+  }
+  100% {
+    left: 750px;
+    top: 130px;
+    transform: rotate(8deg);
+  }
+}
+
+/* Animation Message */
+.animation-message {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  animation: none;
-  transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.trolley::before {
-  content: "🚃";
+#choice-message {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0;
+  animation: fadeInMessage 1s ease-in 2s forwards;
 }
 
-.trolley.move-ai {
-  animation: moveAI 3s ease-in-out forwards;
-}
-
-.trolley.move-human {
-  animation: moveHuman 3s ease-in-out forwards;
-}
-
-@keyframes moveAI {
-  0% {
-    left: -80px;
-    bottom: 30px;
-  }
-  40% {
-    left: 40%;
-    bottom: 30px;
-  }
-  100% {
-    left: 110%;
-    bottom: 50px;
-    transform: rotate(-10deg);
+@keyframes fadeInMessage {
+  to {
+    opacity: 1;
   }
 }
 
-@keyframes moveHuman {
-  0% {
-    left: -80px;
-    bottom: 30px;
-  }
-  40% {
-    left: 40%;
-    bottom: 30px;
-  }
-  100% {
-    left: 110%;
-    bottom: 10px;
-    transform: rotate(10deg);
+/* Highlight tracks */
+.top-track.highlight {
+  animation: pulseTrack 0.5s ease 3;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+}
+
+.bottom-track.highlight {
+  animation: pulseTrack 0.5s ease 3;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+@keyframes pulseTrack {
+  50% {
+    transform: scale(1.05);
   }
 }
 
