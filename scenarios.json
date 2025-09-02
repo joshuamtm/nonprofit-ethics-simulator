@@ -1,0 +1,109 @@
+{
+  "scenarios": [
+    {
+      "id": "innovate-for-good",
+      "title": "InnovateForGood: Grant Approval Automation",
+      "currentState": "Currently only able to award 50-60% of available funds annually due to manual review bottlenecks. Many deserving projects go unfunded simply due to processing delays.",
+      "aiOpportunity": "Deploy an AI system to streamline grant application review, automatically scoring applications based on impact metrics, feasibility, and alignment with foundation goals.",
+      "benefits": [
+        "Award 95-100% of available funds ($5M more distributed)",
+        "Reduce approval time by 70% (weeks to days)",
+        "Fund 40% more projects annually",
+        "Free staff to focus on grantee support"
+      ],
+      "risks": [
+        "Algorithm favors quantifiable over qualitative impact",
+        "May disadvantage grassroots organizations with less polished applications",
+        "Reduces human judgment in understanding community context",
+        "Could perpetuate existing funding inequalities"
+      ],
+      "pullLeverOutcome": "You implemented the AI grant review system. Within 6 months, grant distribution increased to 98% of available funds. However, data shows 65% of newly funded projects went to larger, established nonprofits with professional grant writers. Smaller, community-led initiatives saw their funding rate drop by 30%.",
+      "dontPullOutcome": "You maintained human-centered review. While only 60% of funds were distributed, the grants went to a diverse mix of organizations. Staff report that personal conversations during review often revealed crucial context that wouldn't appear in any application form.",
+      "reflection": "This scenario highlights the tension between efficiency and equity. While AI can process more applications faster, human reviewers bring cultural competence and contextual understanding that algorithms struggle to replicate."
+    },
+    {
+      "id": "haven-heart",
+      "title": "HavenHeart: AI-Powered Donor Outreach",
+      "currentState": "Donor retention at 45%, with personalized outreach limited to major donors. Small donors receive generic communications and rarely increase their giving.",
+      "aiOpportunity": "Implement AI to analyze donor behavior and create personalized engagement strategies, predicting optimal timing, messaging, and ask amounts for each donor.",
+      "benefits": [
+        "Increase donor retention to projected 65%",
+        "Boost average donation size by 35%",
+        "Reduce fundraising costs by 40%",
+        "Scale personalized stewardship to all donor levels"
+      ],
+      "risks": [
+        "Donors may feel manipulated by overly optimized messaging",
+        "Risk of crossing ethical boundaries in persuasion tactics",
+        "Potential data privacy concerns with behavior tracking",
+        "Could reduce authentic human connections with organization"
+      ],
+      "pullLeverOutcome": "The AI system launched successfully, increasing donations by 42% in year one. However, a data breach exposed donor behavioral profiles, revealing how the AI categorized people as 'guilt-motivated' or 'prestige-seeking.' Donor trust plummeted, with 30% requesting data deletion.",
+      "dontPullOutcome": "You chose human-centered fundraising. While growth was slower (8% increase), donors reported feeling genuinely valued. A survey showed 78% appreciated the 'authentic, non-pushy' communication style, leading to stronger long-term relationships.",
+      "reflection": "The fundraising scenario explores whether the ends justify the means. Even successful AI implementation can backfire if it compromises the trust and authentic relationships that nonprofits depend on."
+    },
+    {
+      "id": "climate-watch",
+      "title": "ClimateWatch: AI-Powered Environmental Research",
+      "currentState": "Your climate research nonprofit analyzes satellite data manually, processing only 15% of available environmental data. Critical deforestation and emissions patterns go undetected for months.",
+      "aiOpportunity": "Deploy advanced AI models to analyze 100% of satellite imagery, detect illegal logging in real-time, predict wildfire risks, and track corporate emissions violations with unprecedented accuracy.",
+      "benefits": [
+        "Process 100% of available satellite data (up from 15%)",
+        "Detect deforestation within 24 hours (vs. 3-6 months)",
+        "Identify 5x more environmental violations",
+        "Generate evidence for 300+ legal cases annually"
+      ],
+      "risks": [
+        "AI training and operation consumes 500 MWh annually (equivalent to 50 homes)",
+        "Data centers require 15 million gallons of water for cooling",
+        "Carbon footprint of 250 tons CO2 per year",
+        "Contributing to the very problem you're trying to solve"
+      ],
+      "pullLeverOutcome": "Your AI system became instrumental in stopping deforestation across 50,000 acres and won landmark climate lawsuits. However, an investigative report revealed your AI infrastructure's carbon footprint equals that of 1,000 transatlantic flights annually. Climate activists now protest outside your offices, calling you hypocrites.",
+      "dontPullOutcome": "You chose low-tech approaches, maintaining your organization's carbon-neutral status. While you caught fewer violations, your moral authority remained intact. When testifying before Congress, your director could honestly say 'we practice what we preach,' lending powerful credibility to your advocacy.",
+      "reflection": "This paradox captures the ultimate irony: using environmentally harmful AI to protect the environment. It asks whether the ends (saving forests and climate) justify the means (contributing to emissions and water scarcity)."
+    },
+    {
+      "id": "food-bank-optimizer",
+      "title": "Food Bank Network: Distribution Algorithm",
+      "currentState": "25% of donated food spoils due to distribution inefficiencies. Some neighborhoods oversupplied while others face shortages. Manual allocation based on historical patterns and staff intuition.",
+      "aiOpportunity": "Implement predictive AI to optimize food distribution based on demographic data, consumption patterns, weather, and real-time inventory, minimizing waste while maximizing reach.",
+      "benefits": [
+        "Reduce food waste from 25% to projected 5%",
+        "Serve 40% more families with same resources",
+        "Optimize delivery routes, cutting fuel costs 30%",
+        "Predict demand spikes before they occur"
+      ],
+      "risks": [
+        "May deprioritize areas with irregular need patterns",
+        "Relies on demographic assumptions that could reinforce biases",
+        "Reduces flexibility for emergency situations",
+        "Could miss hidden pockets of food insecurity"
+      ],
+      "pullLeverOutcome": "The AI optimizer dramatically reduced waste to 6% and served 38% more families. However, rural communities and undocumented populations became systematically underserved as the algorithm favored 'predictable' urban distribution points with better data.",
+      "dontPullOutcome": "You kept human-managed distribution. While efficiency remained lower, local coordinators maintained relationships that helped identify hidden need. When a factory closed suddenly, staff quickly redirected resources to affected families - something the algorithm wouldn't have anticipated.",
+      "reflection": "Food security intersects with social justice. This scenario examines whether optimization for efficiency might inadvertently harm the most vulnerable populations who often exist outside traditional data sets."
+    },
+    {
+      "id": "youth-mentor-match",
+      "title": "Youth Mentor Match: Algorithmic Pairing",
+      "currentState": "60% of mentor-mentee matches succeed long-term. Current matching based on basic availability and geographic proximity, with limited consideration of compatibility factors.",
+      "aiOpportunity": "Use machine learning to analyze personality assessments, interests, communication styles, and past success patterns to predict optimal mentor-mentee pairings.",
+      "benefits": [
+        "Increase successful matches to projected 85%",
+        "Reduce time to match from weeks to days",
+        "Better retain volunteers through successful pairings",
+        "Scale program to serve 50% more youth"
+      ],
+      "risks": [
+        "May reduce diverse, challenging growth experiences",
+        "Could reinforce social bubbles and limit exposure",
+        "Removes serendipitous connections that change lives",
+        "Risk of encoding societal biases into matching"
+      ],
+      "pullLeverOutcome": "The AI matching system achieved an 82% success rate. However, analysis revealed it consistently paired youth with mentors from similar backgrounds, reducing cross-cultural connections by 60%. Youth reported feeling 'comfortable but not challenged' in their growth.",
+      "dontPullOutcome": "You preserved human-led matching. While success rates stayed at 60%, the 'failed' matches often provided valuable learning experiences. Several youth specifically credited their 'unlikely' mentors with opening their eyes to new possibilities they never imagined.",
+      "reflection": "Youth development benefits from both comfort and challenge. This scenario questions whether optimizing for 'success' might eliminate the transformative power of unexpected connections."
+    }
+  ]
+}

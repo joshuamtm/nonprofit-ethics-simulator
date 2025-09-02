@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonprofit AI Trolley Problem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Nonprofit AI Trolley Problem</h1>
+        <p class="tagline">Navigate the ethical dilemmas of AI implementation in nonprofit work</p>
+    </header>
+
+    <main>
+        <div id="scenario-container" class="container">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="screen active">
+                <h2>Welcome to the Nonprofit AI Ethics Simulator</h2>
+                <p>You'll face 5 real-world scenarios where nonprofit organizations must decide whether to implement AI solutions.</p>
+                <p>Each decision involves trade-offs between efficiency and ethics, scale and sensitivity.</p>
+                <button class="btn btn-primary" onclick="startSimulation()">Begin Simulation</button>
+            </div>
+
+            <!-- Scenario Screen -->
+            <div id="scenario-screen" class="screen">
+                <div class="scenario-header">
+                    <h2 id="scenario-title"></h2>
+                    <span class="scenario-counter">Scenario <span id="current-scenario">1</span> of 5</span>
+                </div>
+
+                <div class="scenario-content">
+                    <div class="two-column">
+                        <div class="column">
+                            <h3>Current State</h3>
+                            <p id="current-state"></p>
+                        </div>
+                        <div class="column">
+                            <h3>AI Opportunity</h3>
+                            <p id="ai-opportunity"></p>
+                        </div>
+                    </div>
+
+                    <div class="benefits-risks">
+                        <div class="benefits-box">
+                            <h3>Potential Benefits</h3>
+                            <ul id="benefits-list"></ul>
+                        </div>
+                        <div class="risks-box">
+                            <h3>Potential Risks</h3>
+                            <ul id="risks-list"></ul>
+                        </div>
+                    </div>
+
+                    <div class="decision-area">
+                        <h3>Your Decision</h3>
+                        <p class="decision-prompt">Will you implement the AI solution?</p>
+                        <div class="button-group">
+                            <button class="btn btn-lever" onclick="makeDecision(true)">
+                                <span class="lever-icon">⚡</span>
+                                Pull the Lever
+                                <span class="btn-subtitle">Implement AI</span>
+                            </button>
+                            <button class="btn btn-no-lever" onclick="makeDecision(false)">
+                                <span class="stop-icon">✋</span>
+                                Don't Pull
+                                <span class="btn-subtitle">Keep Status Quo</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outcome Screen -->
+            <div id="outcome-screen" class="screen">
+                <h2>Decision Outcome</h2>
+                <div class="outcome-content">
+                    <p id="outcome-text"></p>
+                    <div class="reflection-box">
+                        <h3>Points to Consider</h3>
+                        <p id="reflection-text"></p>
+                    </div>
+                    <button class="btn btn-primary" onclick="nextScenario()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Summary Screen -->
+            <div id="summary-screen" class="screen">
+                <h2>Simulation Complete</h2>
+                <div class="summary-content">
+                    <p>You've navigated all 5 ethical dilemmas.</p>
+                    <div id="decisions-summary"></div>
+                    <div class="final-thoughts">
+                        <h3>Key Takeaway</h3>
+                        <p>There are no perfect answers in AI ethics. Each decision involves trade-offs between efficiency and equity, scale and sensitivity, innovation and inclusion.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="restartSimulation()">Start Over</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>An ethical exploration tool for nonprofit professionals</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
